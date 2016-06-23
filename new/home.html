@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="">
+<head>
+   <title>Home-Puppy Love</title>
+   <link rel="stylesheet" type="text/css" href="css/home.css">
+   <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+   <script src="js/jquery-1.12.4.min.js"></script>
+   <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+   <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+   <script type="text/javascript" src="js/angular.min.js"></script>
+   <script type="text/javascript" src="data.json"></script>
+   <script type="text/javascript" src="js/b.js"></script>
+</head>
+<body>
+   <div class="row banner">
+      <img src="images/logo.png">
+   </div>
+   <div class="row">
+		<div class="row">
+			<ul id="Tab" class="nav nav-pills nav-justified" role="tablist">
+    			<li class="active tab"><a href="#">Home</a></li>
+    			<li class="disabled tab"><a href="#">View Results</a></li>
+    			<li class="tab"><a href="#">How It Works</a></li>
+    			<li class="tab"><a href="#">Privacy</a></li>
+    			<li class="tab"><a href="#">Logout</a></li>
+  			</ul>
+  		</div>
+  	</div>
+  	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<div class="row">
+				<input id="autocomplete-4" placeholder="Type name of crush">
+			</div>
+			<div class="col-sm-6 box">
+				<img src="images/pic.jpg" class="col-sm-4">
+				<div class="col-sm-8">details</div>
+			</div>
+			<div class="col-sm-6 box">
+				<img src="images/pic.jpg" class="col-sm-4">
+				<div class="col-sm-8">details</div>
+			</div>
+			<div class="col-sm-6 box">
+				<img src="images/pic.jpg" class="col-sm-4">
+				<div class="col-sm-8">details</div>
+			</div>
+			<div class="col-sm-6 box">
+				<img src="images/pic.jpg" class="col-sm-4">
+				<div class="col-sm-8">details</div>
+			</div>
+		</div>
+		<div class="col-sm-3"></div>
+	</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Confirm your crush</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <img src="images/pic.jpg" class="col-sm-4">
+            <div class="col-sm-8">
+              <ul>
+                <li><h3>Name - Insert name here</h3></li>
+                <li><h3 id="iii"></h3></li>
+                <li><h3>Department - Insert dept here</h3></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Confirm</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+   
+</body>
+</html>

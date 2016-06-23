@@ -1,0 +1,29 @@
+/**{
+	outline: 1px solid red !important;
+}*/
+.banner{
+	background-color: #ec4667;
+	text-align: center;
+	padding: 1%;
+}
+.box{
+	height: 20vh;
+	border-width: 1px;
+	border-style: solid;
+}
+.button{
+	margin:2%;
+}
+#Tab{
+	margin: 2%;
+	background-color: rgba(255, 192, 203, 0.37);
+}
+.tab{
+	border-width: 1px;
+	border-style: solid;
+	border-color: lightpink;
+}
+#autocomplete-4{
+	width: 96%;
+	margin:2%;
+}

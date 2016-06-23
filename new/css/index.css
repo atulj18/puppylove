@@ -1,0 +1,26 @@
+/**{
+	outline: 1px solid red !important;
+}*/
+#invalid{
+	color:red;
+}
+form{
+	display: normal;
+}
+#main{
+	margin-top: 2%;
+	border-width: 1px;
+	border-style: solid;
+}
+.inputbox{
+	width: 90%;
+	margin: 3%;
+}
+.banner{
+	background-color: #ec4667;
+	text-align: center;
+	padding: 1%;
+}
+#invalid{
+	height: 1em;
+}
