@@ -1,2 +1,2 @@
-# puppylove
-Puppy love v-2.0
+# PuppyLove
+Puppy Love v-2.0
