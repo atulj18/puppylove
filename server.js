@@ -36,21 +36,10 @@ io.on('connection', function(socket)
 
 
 	});
-	socket.on('home',function(){
+	socket.on('home',function(data){
 		if(typeof usr === "undefined"){io.emit('fraud');};
 		if(typeof usr === "string") {
-			var i;
-			db.each("SELECT rowid AS id,crush1,crush2,crush3,crush4 FROM students",function(err,row){
-			  if(row.crush1 == usr || row.crush2 == usr || row.crush3 == usr || row.crush4 == usr){
-			     db.each("SELECT rowid AS id,username,crushmeter FROM students",function(e,r){
-			       if(usr == r.username){
-			         i = Number(r.crushmeter)+1;
-			         db.run("UPDATE students SET crushmeter = ? WHERE username = ?",[i.toString(),usr])
-			       }
-			     });
-			  }
-			});
-			db.each("SELECT rowid AS id,name,roll_no,imgsrc,username,crush1,crush2,crush3,crush4,crushes_no,Department,gender,crushmeter",function(err,row){
+			db.each("SELECT rowid AS id,name,roll_no,imgsrc,username,crush1,crush2,crush3,crush4,crushes_no,Department,gender,crushmeter FROM students",function(err,row){
 				if(usr === row.username){
 					io.emit('usr_details',{
 						gender : row.gender,
@@ -66,14 +55,14 @@ io.on('connection', function(socket)
 		};
 	});
 	socket.on('c_details',function(data){
-		db.each("SELECT rowid AS id,name,roll_no,imgsrc,username,crush1,crush2,crush3,crush4,crushes_no,Department,gender",function(err,row){
-			if(data.crushes_no >= 1 && data.crush1 === row.username){
+		db.each("SELECT rowid AS id,name,roll_no,imgsrc,username,crush1,crush2,crush3,crush4,crushes_no,Department,gender FROM students",function(err,row){
+			if(data.crushes_no >= 1 && row.username == data.crush1){
 				io.emit('crush1',{
 					name : row.name,
 					imgsrc : row.imgsrc,
 					Department : row.Department,
 					roll_no : row.roll_no
-				})
+				});
 			};
 			if(data.crushes_no >= 2 && data.crush2 === row.username){
 				io.emit('crush2',{
@@ -103,10 +92,42 @@ io.on('connection', function(socket)
 	});
 	socket.on('add_crush',function(data){
 		db.run("UPDATE students SET crushes_no = ? WHERE username = ?",[data.crushes_no.toString(),usr])
-		if(data.crushes_no === 1){db.run("UPDATE students SET crush1 = ? WHERE username = ?",[data.username,usr])}
-		else if(data.crushes_no === 2){db.run("UPDATE students SET crush2 = ? WHERE username = ?",[data.username,usr])}
-		else if(data.crushes_no === 3){db.run("UPDATE students SET crush3 = ? WHERE username = ?",[data.username,usr])}
-		else if(data.crushes_no === 4){db.run("UPDATE students SET crush2 = ? WHERE username = ?",[data.username,usr])}
+		if(data.crushes_no === 1){db.run("UPDATE students SET crush1 = ? WHERE username = ?",[data.username,usr])
+			db.each("SELECT rowid as id,crushmeter,username FROM students",function(err,row){
+				if(row.username === data.username){
+					var x = Number(row.crushmeter);
+					x = x+1
+					db.run("UPDATE students SET crushmeter = ? WHERE username = ?",[x.toString(),data.username])
+				}
+			});
+		}
+		else if(data.crushes_no === 2){db.run("UPDATE students SET crush2 = ? WHERE username = ?",[data.username,usr])
+		db.each("SELECT rowid as id,crushmeter,username FROM students",function(err,row){
+			if(row.username === data.username){
+				var x = Number(row.crushmeter);
+				x = x+1
+				db.run("UPDATE students SET crushmeter = ? WHERE username = ?",[x.toString(),data.username])
+			}
+		});
+		}
+		else if(data.crushes_no === 3){db.run("UPDATE students SET crush3 = ? WHERE username = ?",[data.username,usr])
+		db.each("SELECT rowid as id,crushmeter,username FROM students",function(err,row){
+			if(row.username === data.username){
+				var x = Number(row.crushmeter);
+				x = x+1
+				db.run("UPDATE students SET crushmeter = ? WHERE username = ?",[x.toString(),data.username])
+			}
+		});
+		}
+		else if(data.crushes_no === 4){db.run("UPDATE students SET crush2 = ? WHERE username = ?",[data.username,usr])
+		db.each("SELECT rowid as id,crushmeter,username FROM students",function(err,row){
+			if(row.username === data.username){
+				var x = Number(row.crushmeter);
+				x = x+1
+				db.run("UPDATE students SET crushmeter = ? WHERE username = ?",[x.toString(),data.username])
+			}
+		});
+		}
 	});
 	//setTimeout(function(){console.log(usr);},2000);
 });
