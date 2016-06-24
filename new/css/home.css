@@ -7,15 +7,14 @@
 	padding: 1%;
 }
 .box{
-	height: 20vh;
+	height: 25vh;
 	border-width: 1px;
 	border-style: solid;
-}
-.button{
-	margin:2%;
+	padding-top: 1.5vh;
 }
 #Tab{
-	margin: 2%;
+	margin-top: 2%;
+	margin-bottom: 2%;
 	background-color: rgba(255, 192, 203, 0.37);
 }
 .tab{
@@ -26,4 +25,7 @@
 #autocomplete-4{
 	width: 96%;
 	margin:2%;
+}
+.heart{
+	width: 10%;
 }
