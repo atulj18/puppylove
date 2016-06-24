@@ -10,7 +10,8 @@
    <script type="text/javascript" src="js/bootstrap.min.js"></script>
    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
    <script type="text/javascript" src="js/angular.min.js"></script>
-   <script type="text/javascript" src="data.json"></script>
+   <script type="text/javascript" src="datam.json"></script>
+   <script type="text/javascript" src="dataf.json"></script>
    <script type="text/javascript" src="js/b.js"></script>
 </head>
 <body>
@@ -24,34 +25,27 @@
     			<li class="disabled tab"><a href="#">View Results</a></li>
     			<li class="tab"><a href="#">How It Works</a></li>
     			<li class="tab"><a href="#">Privacy</a></li>
-    			<li class="tab"><a href="#">Logout</a></li>
+    			<li class="tab"><a href="index.html">Logout</a></li>
   			</ul>
   		</div>
-  	</div>
+   </div>
   	<div class="row">
-		<div class="col-sm-3"></div>
-		<div class="col-sm-6">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
 			<div class="row">
 				<input id="autocomplete-4" placeholder="Type name of crush">
 			</div>
-			<div class="col-sm-6 box">
-				<img src="images/pic.jpg" class="col-sm-4">
-				<div class="col-sm-8">details</div>
+			<div class="col-sm-6 box" ng-repeat="n in [1,2,3,4]">
+				<img ng-attr-id="{{'crushpic'+($index+1)}}" src="images/pic.jpg" class="col-sm-4">
+				<div class="col-sm-8">
+          <h3 ng-attr-id="{{'crushname'+($index+1)}}"></h3>
+          <h3 ng-attr-id="{{'crushroll'+($index+1)}}"></h3>
+          <h3 ng-attr-id="{{'crushdept'+($index+1)}}"></h3>
+        </div>
 			</div>
-			<div class="col-sm-6 box">
-				<img src="images/pic.jpg" class="col-sm-4">
-				<div class="col-sm-8">details</div>
-			</div>
-			<div class="col-sm-6 box">
-				<img src="images/pic.jpg" class="col-sm-4">
-				<div class="col-sm-8">details</div>
-			</div>
-			<div class="col-sm-6 box">
-				<img src="images/pic.jpg" class="col-sm-4">
-				<div class="col-sm-8">details</div>
-			</div>
+      <img ng-attr-id="{{'heart'+($index+1)}}" class="heart" src="images/heartempty.jpeg" ng-repeat="n in [1,2,3,4,5,6,7,8,9,10]">
 		</div>
-		<div class="col-sm-3"></div>
+		<div class="col-sm-2"></div>
 	</div>
 
   <!-- Modal -->
@@ -66,18 +60,18 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <img src="images/pic.jpg" class="col-sm-4">
+            <img id="modalpic" src="images/pic.jpg" class="col-sm-4">
             <div class="col-sm-8">
-              <ul>
-                <li><h3>Name - Insert name here</h3></li>
-                <li><h3 id="iii"></h3></li>
-                <li><h3>Department - Insert dept here</h3></li>
+              <ul class="list-group">
+                <h4 id="modalname" class="list-group-item"></h4>
+                <h4 id="modalroll" class="list-group-item"></h4>
+                <h4 id="modaldept" class="list-group-item"></h4>
               </ul>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Confirm</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="plzconfirm()">Confirm</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
