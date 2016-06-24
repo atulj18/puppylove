@@ -7,7 +7,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 app.use(express.static(__dirname+'/new'));
 http.listen(8080);
-const usr;
+var usr;
 io.on('connection', function(socket)
 {
 	socket.on('authentication',function(data)
@@ -102,11 +102,11 @@ io.on('connection', function(socket)
 		});
 	});
 	socket.on('add_crush',function(data){
-		db.run("UPDATE students SET crushes_no = ? WHERE username = ?",[data.crushes_no.toString(),data.username])
-		if(data.crushes_no === 1){db.run("UPDATE students SET crush1 = ? WHERE username = ?",[data.crush1,data.username])}
-		else if(data.crushes_no === 2){db.run("UPDATE students SET crush2 = ? WHERE username = ?",[data.crush2,data.username])}
-		else if(data.crushes_no === 3){db.run("UPDATE students SET crush3 = ? WHERE username = ?",[data.crush3,data.username])}
-		else if(data.crushes_no === 4){db.run("UPDATE students SET crush2 = ? WHERE username = ?",[data.crush4,data.username])}
+		db.run("UPDATE students SET crushes_no = ? WHERE username = ?",[data.crushes_no.toString(),usr])
+		if(data.crushes_no === 1){db.run("UPDATE students SET crush1 = ? WHERE username = ?",[data.username,usr])}
+		else if(data.crushes_no === 2){db.run("UPDATE students SET crush2 = ? WHERE username = ?",[data.username,usr])}
+		else if(data.crushes_no === 3){db.run("UPDATE students SET crush3 = ? WHERE username = ?",[data.username,usr])}
+		else if(data.crushes_no === 4){db.run("UPDATE students SET crush2 = ? WHERE username = ?",[data.username,usr])}
 	});
 	//setTimeout(function(){console.log(usr);},2000);
 });
