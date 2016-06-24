@@ -39,6 +39,17 @@ io.on('connection', function(socket)
 	socket.on('home',function(){
 		if(typeof usr === "undefined"){io.emit('fraud');};
 		if(typeof usr === "string") {
+			var i;
+			db.each("SELECT rowid AS id,crush1,crush2,crush3,crush4 FROM students",function(err,row){
+			  if(row.crush1 == usr || row.crush2 == usr || row.crush3 == usr || row.crush4 == usr){
+			     db.each("SELECT rowid AS id,username,crushmeter FROM students",function(e,r){
+			       if(usr == r.username){
+			         i = Number(r.crushmeter)+1;
+			         db.run("UPDATE students SET crushmeter = ? WHERE username = ?",[i.toString(),usr])
+			       }
+			     });
+			  }
+			});
 			db.each("SELECT rowid AS id,name,roll_no,imgsrc,username,crush1,crush2,crush3,crush4,crushes_no,Department,gender,crushmeter",function(err,row){
 				if(usr === row.username){
 					io.emit('usr_details',{
