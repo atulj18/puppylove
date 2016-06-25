@@ -1,16 +1,7 @@
-/**{
-	outline: 1px solid red !important;
-}*/
 .banner{
 	background-color: #ec4667;
 	text-align: center;
 	padding: 1%;
-}
-.box{
-	height: 25vh;
-	border-width: 1px;
-	border-style: solid;
-	padding-top: 1.5vh;
 }
 #Tab{
 	margin-top: 2%;
@@ -22,14 +13,4 @@
 	border-width: 1px;
 	border-style: solid;
 	border-color: lightpink;
-}
-#autocomplete-4{
-	width: 96%;
-	margin:2%;
-}
-.heart{
-	width: 10%;
-}
-#crushometer{
-	margin-top: 2%;
 }

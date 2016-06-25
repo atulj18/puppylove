@@ -23,8 +23,8 @@
 			<ul id="Tab" class="nav nav-pills nav-justified" role="tablist">
     			<li class="active tab"><a href="#">Home</a></li>
     			<li class="disabled tab"><a href="#">View Results</a></li>
-    			<li class="tab"><a href="#">How It Works</a></li>
-    			<li class="tab"><a href="#">Privacy</a></li>
+    			<li class="tab"><a href="howitworks.html">How It Works</a></li>
+    			<li class="tab"><a href="privacy.html">Privacy</a></li>
     			<li class="tab"><a href="index.html">Logout</a></li>
   			</ul>
   		</div>
@@ -38,14 +38,23 @@
 			<div class="col-sm-6 box" ng-repeat="n in [1,2,3,4]">
 				<img ng-attr-id="{{'crushpic'+($index+1)}}" src="images/pic.jpg" class="col-sm-4">
 				<div class="col-sm-8">
-          <h3 ng-attr-id="{{'crushname'+($index+1)}}"></h3>
-          <h3 ng-attr-id="{{'crushroll'+($index+1)}}"></h3>
-          <h3 ng-attr-id="{{'crushdept'+($index+1)}}"></h3>
-        </div>
+          			<h3 ng-attr-id="{{'crushname'+($index+1)}}"></h3>
+          			<h3 ng-attr-id="{{'crushroll'+($index+1)}}"></h3>
+          			<h3 ng-attr-id="{{'crushdept'+($index+1)}}"></h3>
+        		</div>
 			</div>
-      <img ng-attr-id="{{'heart'+($index+1)}}" class="heart" src="images/heartempty.jpeg" ng-repeat="n in [1,2,3,4,5,6,7,8,9,10]">
-		</div>
+			</div>
 		<div class="col-sm-2"></div>
+	</div>
+	<div id="crushometer" class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<img src="images/crushometer.png" class="row center-block">
+			<div class="row">
+				<img ng-attr-id="{{'heart'+($index+1)}}" class="heart" src="images/heartempty.jpeg" ng-repeat="n in [1,2,3,4,5,6,7,8,9,10]">
+			</div>
+		</div>
+		<div class="col-sm-3"></div>
 	</div>
 
   <!-- Modal -->
